@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Newsletter Editor</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="./assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="./assets/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+		<link href="./assets/css/main.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div class="container-fluid" id="main-content">
+			<div class="span3">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab-drafts" data-toggle="tab">Drafts</a></li>
+					<li><a href="#tab-sent" data-toggle="tab">Sent</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab-drafts">
+						<ul class="nav nav-tabs nav-stacked" data-bind="foreach:drafts">
+							<li><a data-bind="text: title, click: $root.loadMessage.bind($data, url, 'draft')"></a></li>
+						</ul>
+					</div>
+					<div class="tab-pane" id="tab-sent">
+						<ul class="nav nav-tabs nav-stacked" data-bind="foreach:sent">
+							<li><a data-bind="text: title, click: $root.loadMessage.bind($data, url, 'sent')"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="span9">
+				<div class="form">
+					<div class="control-group">
+						<div class="controls">
+							<textarea data-bind="value:message, ckeditor: {}" class="span6" rows="6" placeholder="Message"></textarea>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input data-bind="value:volume" type="text" placeholder="Volume">
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input data-bind="value:issue" type="text" placeholder="Issue">
+						</div>
+					</div>
+					<div class="form-actions">
+						<button data-bind="click: send" class="btn btn-success"><span class="icon-envelope icon-white"></span> Send</button>
+						<button data-bind="click: preview" class="btn btn-primary pull-right"><span class="icon-search icon-white"></span> Preview</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="./assets/js/bootstrap.min.js"></script>
+		<script src="./assets/js/knockout.js"></script>
+		<script src="./assets/js/knockout.mapping.js"></script>
+		<script src="./assets/js/ckeditor.js"></script>
+		<script src="./assets/js/main.js"></script>
+	</body>
+</html>
